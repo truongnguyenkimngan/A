@@ -1,0 +1,273 @@
+:root {
+    --dark-bg: #0b1218;
+    --dark-blue: #0f2a3a;
+    --neon: #00e5ff;
+    --text-light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-family: Arial, sans-serif;
+    transition: 0.3s;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(11,18,24,0.9);
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+}
+.logo span {
+    color: var(--neon);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--neon);
+    transition: 0.3s;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+    width: 100%;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    padding-top: 140px;
+    text-align: center;
+    background:
+        linear-gradient(rgba(11,18,24,0.85), rgba(11,18,24,0.85)),
+        url("../images/flower-blue.jpg") center/cover no-repeat;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.fade-in.delay {
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* MARQUEE */
+.marquee {
+    margin: 30px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee span {
+    display: inline-block;
+    color: var(--neon);
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* SECTION */
+.section {
+    padding: 100px 60px;
+    text-align: center;
+}
+
+.dark {
+    background: var(--dark-blue);
+}
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+/* CARDS */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card {
+    background: #111c24;
+    width: 260px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,229,255,0.3);
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+/* CTA */
+.cta {
+    margin-top: 30px;
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: none;
+    background: var(--neon);
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta:hover {
+    transform: scale(1.05);
+}
+
+/* ANIMATIONS */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 rgba(0,229,255,0.7); }
+    70% { box-shadow: 0 0 20px rgba(0,229,255,0); }
+}
+
+.shake {
+    animation: shake 2s infinite;
+}
+
+@keyframes shake {
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+/* SCROLL REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CURSOR */
+.cursor {
+    width: 14px;
+    height: 14px;
+    background: var(--neon);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode {
+    background: #f4f7f9;
+    color: #0b1218;
+}
+
+/* Navbar */
+body.light-mode .navbar {
+    background: rgba(244,247,249,0.95);
+}
+
+body.light-mode .nav-item {
+    color: #0b1218;
+}
+
+body.light-mode .nav-item::after {
+    background: #007c8a;
+}
+
+/* Hero */
+body.light-mode .hero {
+    background:
+        linear-gradient(rgba(244,247,249,0.85), rgba(244,247,249,0.85)),
+        url("../images/flower-blue.jpg") center/cover no-repeat;
+}
+
+/* Section */
+body.light-mode .dark {
+    background: #e6eef2;
+}
+
+/* Cards */
+body.light-mode .card {
+    background: #ffffff;
+    color: #0b1218;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+body.light-mode .card p {
+    color: #333333;
+}
+
+/* FIX CHÍNH: chữ không chìm vào ảnh */
+body.light-mode .card h3 {
+    color: #004f57;
+}
+
+/* CTA */
+body.light-mode .cta {
+    background: #007c8a;
+    color: #ffffff;
+}
+
+/* Cursor */
+body.light-mode .cursor {
+    background: #007c8a;
+}
